@@ -3,30 +3,30 @@ name: Build and Deploy .NET Application
 on:
   push:
     branches:
-      - main  # Automáticamente se ejecuta cuando se suben cambios a la rama principal
+      - main  # Esto ejecuta el workflow cuando haces un push a la rama `main`
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest  # Esto ejecutará el job en una máquina Ubuntu
+
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2  # Esto obtiene el código de tu repositorio
 
     - name: Set up .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1  # Configura la versión de .NET que necesitas
       with:
         dotnet-version: '8.0'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore  # Esto instala las dependencias de tu proyecto
 
     - name: Build application
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release  # Esto construye tu aplicación
 
     - name: Publish application
-      run: dotnet publish --configuration Release --output ./published
+      run: dotnet publish --configuration Release --output ./published  # Esto publica la aplicación
 
-    - name: Deploy to server (ejemplo de despliegue)
+    - name: Deploy to server
       run: |
-        scp -r ./published username@server:/path/to/deploy
+        scp -r ./published dego@179.6.147.233:/path/to/deploy  # Aquí deberías poner la IP de tu servidor
