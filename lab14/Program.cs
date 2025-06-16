@@ -1,16 +1,9 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+// Configuración de la aplicación
 var app = builder.Build();
 
+// Respuesta a la raíz
 app.MapGet("/", () => "Hola Mundo desde .NET en Vercel!");
-
-app.UseSwagger();
-app.UseSwaggerUI();
 
 app.Run();
