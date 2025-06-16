@@ -3,7 +3,7 @@
 on:
   push:
     branches:
-      - main  
+      - main  # Automáticamente se ejecuta cuando se suben cambios a la rama principal
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore
 
       - name: Build application
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release  # Elimina la opción --output
 
       - name: Publish application
         run: dotnet publish --configuration Release --output ./published
