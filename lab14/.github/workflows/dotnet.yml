@@ -34,8 +34,9 @@ jobs:
         run: dotnet publish --configuration Release --output ./published
 
 
-      - name: Deploy to server (ejemplo de despliegue)
+      - name: Deploy to server
         run: |
-          scp -r ./published username@server:/path/to/deploy
+          scp -r ./published dego@179.6.147.233:/path/to/deploy
+      
 
 
