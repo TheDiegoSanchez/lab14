@@ -25,8 +25,9 @@ jobs:
         run: dotnet build --configuration Release  # Esto construye tu aplicación
 
       - name: Publish application
-        run: dotnet publish --configuration Release --output ./published  # Esto publica la aplicación
+        run: dotnet publish --configuration Release  # Elimina la opción --output
 
-      - name: Deploy to server (ejemplo de despliegue)
+      - name: Deploy to server
         run: |
-          scp -r ./published username@server:/path/to/deploy  # Comando para desplegar (lo reemplazarás con tu servidor)
+          scp -r ./published dego@179.6.147.233:/path/to/deploy
+      
